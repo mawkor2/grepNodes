@@ -1,24 +1,19 @@
-function grepNodes(searchText, bodyText, frameId) {
+function grepNodes(searchText, frameId) {
   var matchedNodes = [];
-  var regXSearch;
-  if (typeof searchText === "string") {
-    regXSearch = new RegExp(searchText, "g");
-  }
-  else {
-    regXSearch = searchText;
-  } 
+  var regXSearch = new RegExp(searchText, "g"); 
   var currentNode = null, matches = null;
   if (frameId && !window.frames[frameId]) {
     return null;
   }
-  var oDoc = (frameId) ? window.frames[frameId].contentDocument : document;
-  for (var nodeIdx in oDoc.all) {
-    currentNode = oDoc.all[nodeIdx];
-    if (!currentNode.nodeName || currentNode.nodeName === undefined) {
+  var theDoc = (frameId) ? window.frames[frameId].contentDocument : document;
+  var allNodes = (document.all) ? document.all : document.getElementsByTagName('*');
+  for (var nodeIdx in allNodes) {
+    currentNode = allNodes[nodeIdx];
+    if (currentNode.nodeName === undefined) {
       break;
     }
     if (!(currentNode.nodeName.toLowerCase().match(/html|script|head|meta|link|object/))) {
-      matches = currentNode.innerText.match(regXSearch);
+      matches = currentNode.innerHTML.match(regXSearch);
       var totalMatches = 0;
       if (matches) {
         var totalChildElements = 0;
