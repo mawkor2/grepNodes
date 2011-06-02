@@ -1,6 +1,5 @@
-This is only tested in Chrome 12, since it was only necessary for a chrome extension. I will be creating a FF version soon. It seems more optimal that way, and since chrome actually has document.all, it's slightly faster than usiong childNodes/children (less operations). The same concept will work using childNodes/children (the difference is childNodes also gets text nodes which are unwanted in this case) 
-which I need to implement in a few days anyway, so check back for updates.
+needs IE implementation
 
-Note, other examples I have seen are RECURSIVE which is potentially bad in javascript which can end in stack overflows, especially in a browser client which has limited memory for such things. A huge DOM tree can blow up your browser.
+Note, other examples I have seen are RECURSIVE which is potentially bad in javascript which can end in stack overflows, especially in a browser client which has limited memory for such things. A huge DOM tree can blow up your browser, or simply cause javascript to stop executing.
 
 
