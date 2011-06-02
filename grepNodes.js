@@ -6,7 +6,7 @@ function grepNodes(searchText, frameId) {
     return null;
   }
   var theDoc = (frameId) ? window.frames[frameId].contentDocument : document;
-  var allNodes = (document.all) ? document.all : document.getElementsByTagName('*');
+  var allNodes = (theDoc.all) ? theDoc.all : theDoc.getElementsByTagName('*');
   for (var nodeIdx in allNodes) {
     currentNode = allNodes[nodeIdx];
     if (currentNode.nodeName === undefined) {
