@@ -12,13 +12,13 @@ function grepNodes(searchText, frameId) {
     if (currentNode.nodeName === undefined) {
       break;
     }
-    if (!(currentNode.nodeName.toLowerCase().match(/html|script|head|meta|link|object/))) {
+    if (!(currentNode.nodeName.toLowerCase().match(/svg|img|html|script|head|meta|link|object/)) && !(currentNode.namespaceURI === "http://www.w3.org/2000/svg")) {
       matches = currentNode.innerHTML.match(regXSearch);
       var totalMatches = 0;
       if (matches) {
         var totalChildElements = 0;
         for (var i=0;i<currentNode.children.length;i++) {
-          if (!(currentNode.children[i].nodeName.toLowerCase().match(/html|script|head|meta|link|object/))) {
+          if (!(currentNode.children[i].nodeName.toLowerCase().match(/svg|img|html|script|head|meta|link|object/)) && !(currentNode.namespaceURI === "http://www.w3.org/2000/svg")) {
             totalChildElements++;
           }
         }
